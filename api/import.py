@@ -22,9 +22,12 @@ def import_erda_csv(file_name):
 	return data
 def make_seconds(hh_mm_ss):
 	try:
-		return int(hh_mm_ss[3:5])* 60 + int(hh_mm_ss[6:8])
+		return int(hh_mm_ss[3:5])*60 + int(hh_mm_ss[6:8])
+
+		
+
 	except:
-		print format('bad data : ' + hh_mm_ss)
+		print format(hh_mm_ss[3:5]+ '  : ' + hh_mm_ss[6:8] + ' : '+ hh_mm_ss)
 		pass
 
 
