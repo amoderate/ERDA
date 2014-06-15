@@ -38,16 +38,20 @@ def to_csv(import_file, output_file):
 		count = 0
 		for address in addresses:
 			try:
-				lat_long = get_lat_long(address)
+				lat_long = get_lat_long(str(address)+' Washington, DC')
 				writer.writerow([address, lat_long])
 				time.sleep(.5)
 				count += 1
 				print count
 
-			except:
+			
+
+			except Exception,e: 
+				print str(e)
+				print 'connection error - sleep for 10 seconds'
 				time.sleep(10)
 				pass
-				print 'connection error - sleep for 10 seconds'
+				
 	elapsed = '{:2.2f}'.format(time.time() - start)
 	print('Converted', len(data) - 1, 'records in', elapsed, 's')
 
@@ -57,7 +61,7 @@ def usage():
 	print("usage: convert_address_to_lat_long.py <in_filename> <out_file_name>")
 
 if __name__ == "__main__":
-	if (len(sys.argv) == 2):
+	if (len(sys.argv) == 3):
 		to_csv(sys.argv[1], sys.argv[2])
 	else:
 		usage()
