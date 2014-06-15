@@ -38,11 +38,11 @@ def to_csv(import_file, output_file):
 		count = 0
 		for address in addresses:
 			try:
-				lat_long = get_lat_long(str(address)+' Washington, DC')
+				lat_long = get_lat_long(address[0]+' Washington, DC')
 				writer.writerow([address, lat_long])
 				time.sleep(.5)
 				count += 1
-				print count
+				print address, lat_long
 
 			
 
